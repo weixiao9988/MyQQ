@@ -24,12 +24,27 @@ namespace MyQQ
 
         private void closePBox_MouseHover(object sender, EventArgs e)
         {
-            closePBox.BackColor = Color.FromArgb(150, 50, 50);
+            closePBox.BackColor = Color.FromArgb(200, 50, 50);
         }
 
         private void closePBox_MouseLeave(object sender, EventArgs e)
         {
             closePBox.BackColor = Color.Transparent;
+        }
+
+        private void minPBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void minPBox_MouseHover(object sender, EventArgs e)
+        {
+            minPBox.BackColor = Color.FromArgb(100, 100, 200);
+        }
+
+        private void minPBox_MouseLeave(object sender, EventArgs e)
+        {
+            minPBox.BackColor = Color.Transparent;
         }
     }
 }
