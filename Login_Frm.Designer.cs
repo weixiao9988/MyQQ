@@ -40,18 +40,18 @@
             // 
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 172);
+            this.comboBox1.Location = new System.Drawing.Point(117, 172);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(238, 22);
+            this.comboBox1.Size = new System.Drawing.Size(218, 22);
             this.comboBox1.TabIndex = 0;
             // 
             // textBox1
             // 
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(97, 211);
+            this.textBox1.Location = new System.Drawing.Point(117, 211);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(238, 16);
+            this.textBox1.Size = new System.Drawing.Size(218, 16);
             this.textBox1.TabIndex = 1;
             // 
             // closeBtn
@@ -86,7 +86,7 @@
             // 
             this.closePBox.BackColor = System.Drawing.Color.Transparent;
             this.closePBox.Image = global::MyQQ.Properties.Resources.close1;
-            this.closePBox.Location = new System.Drawing.Point(401, 4);
+            this.closePBox.Location = new System.Drawing.Point(400, 4);
             this.closePBox.Name = "closePBox";
             this.closePBox.Size = new System.Drawing.Size(24, 24);
             this.closePBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -101,7 +101,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.BackgroundImage = global::MyQQ.Properties.Resources.login_1;
+            this.BackgroundImage = global::MyQQ.Properties.Resources.login;
             this.ClientSize = new System.Drawing.Size(427, 327);
             this.Controls.Add(this.closePBox);
             this.Controls.Add(this.button1);
