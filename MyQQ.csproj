@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataOperator.cs" />
     <Compile Include="Login_Frm.cs">
       <SubType>Form</SubType>
     </Compile>

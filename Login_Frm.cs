@@ -12,14 +12,51 @@ namespace MyQQ
 {
     public partial class Login_Frm : Form
     {
+        DataOperator dataOper = new DataOperator();//创建数据操作类的对象
+
         public Login_Frm()
         {
             InitializeComponent();
         }
 
+        private bool ValidateInput()
+        {
+            //登录账号
+            if (userIDCBox.Text=="")
+            {
+                MessageBox.Show("请输入登录账号", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                userIDCBox.Focus();     //使登录账号文本框获得鼠标焦点
+                return false;
+            }
+            else if (userPWDTBox.Text.Trim()=="")
+            {
+                MessageBox.Show("请输入密码", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                userPWDTBox.Focus();//使密码文本框获得鼠标焦点
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 判断输入密码后是否按下回车键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void userPWDTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+                loginBtn_Click(sender, e);
+        }
+
+        private void loginBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void closePBox_MouseClick(object sender, MouseEventArgs e)
         {
-            Close();
+            Application.ExitThread();//退出当前应用程序
         }
 
         private void closePBox_MouseHover(object sender, EventArgs e)
@@ -45,6 +82,33 @@ namespace MyQQ
         private void minPBox_MouseLeave(object sender, EventArgs e)
         {
             minPBox.BackColor = Color.Transparent;
+        }        
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 0x4e:
+                case 0xd:
+                case 0xe:
+                case 0x14:
+                    base.WndProc(ref m);
+                    break;
+                case 0x84://鼠标点任意位置后可以拖动窗体
+                    this.DefWndProc(ref m);
+                    if (m.Result.ToInt32() == 0x01)
+                    {
+                        m.Result = new IntPtr(0x02);
+                    }
+                    break;
+                case 0xA3://禁止双击最大化
+                    break;
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
         }
+
+        
     }
 }
