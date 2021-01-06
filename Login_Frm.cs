@@ -13,6 +13,7 @@ namespace MyQQ
     public partial class Login_Frm : Form
     {
         DataOperator dataOper = new DataOperator();//创建数据操作类的对象
+        private bool mainIsOpen = false;
 
         public Login_Frm()
         {
@@ -50,8 +51,13 @@ namespace MyQQ
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
-        {
-
+        {            
+            if (!mainIsOpen)
+            {
+                Main_Frm mainFrm = new Main_Frm();
+                mainFrm.mAction = (bl) => mainIsOpen = bl;
+                mainFrm.Show();
+            }
         }
 
         private void closePBox_MouseClick(object sender, MouseEventArgs e)
@@ -84,6 +90,10 @@ namespace MyQQ
             minPBox.BackColor = Color.Transparent;
         }        
 
+        /// <summary>
+        /// 窗体移动
+        /// </summary>
+        /// <param name="m"></param>
         protected override void WndProc(ref Message m)
         {
             switch (m.Msg)

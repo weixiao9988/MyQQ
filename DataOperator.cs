@@ -8,7 +8,7 @@ namespace MyQQ
     class DataOperator
     {
         //数据库连接字符串
-        private static string connString = @"Data Source=wixiao;Database=db_MyQQ;User ID=sa;Pwd=;";
+        private static string connString = @"Data Source=WEIXIAO\MYSQLSERVER;Database=db_MyQQ;User ID=sa;Pwd=;";
         //数据库连接对象
         public static SqlConnection connection = new SqlConnection(connString);
 
