@@ -12,14 +12,19 @@ namespace MyQQ
 {
     public partial class Login_Frm : Form
     {
-        DataOperator dataOper = new DataOperator();//创建数据操作类的对象
+        DataOperator dataOprt = new DataOperator();//创建数据操作类的对象
         private bool mainIsOpen = false;
+        private bool regFrmOpen = false;
 
         public Login_Frm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 验证用户输入
+        /// </summary>
+        /// <returns>验证成功，返回true，否则返回false</returns>
         private bool ValidateInput()
         {
             //登录账号
@@ -39,6 +44,27 @@ namespace MyQQ
             return true;
         }
 
+        private void userIDCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //ValidateInput();
+            //根据号码查询其密码、记住密码和自动登录字段的值
+            string sqlStr = "select Pwd,Remember,AutoLogin from tb_User where ID=" + int.Parse(userIDCBox.Text.Trim());
+            DataSet ds = dataOprt.GetDataSet(sqlStr);       //查询结果存储到数据集中
+            if (ds.Tables[0].Rows.Count > 0)       //判断是否存在该用户
+            {
+                if (Convert.ToInt32(ds.Tables[0].Rows[0][1]) == 1)    //判断是否记住密码
+                {
+                    recordPwdChkBox.Checked = true;     //记录密码复选框选中
+                    userPWDTBox.Text = ds.Tables[0].Rows[0][0].ToString();      //自动输入密码
+                    if (Convert.ToInt32(ds.Tables[0].Rows[0][2]) == 1)    //判断是否自动登录
+                    {
+                        autoLoginChkBox.Checked = true;
+                        loginBtn_Click(sender, e);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// 判断输入密码后是否按下回车键
         /// </summary>
@@ -51,13 +77,52 @@ namespace MyQQ
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
-        {            
-            if (!mainIsOpen)
+        {
+            if (ValidateInput())
             {
-                Main_Frm mainFrm = new Main_Frm();
-                mainFrm.mAction = (bl) => mainIsOpen = bl;
-                mainFrm.Show();
+                //定义查询SQL语句
+                string sqlStr = "select count(*) from tb_User where ID=" + int.Parse(userIDCBox.Text.Trim()) + " and Pwd = '" + userPWDTBox.Text.Trim() + "'";
+                
+                int num = dataOprt.ExecSQL(sqlStr);
+                if (num == 1)     //验证通过
+                {
+                    PubCls.loginID = int.Parse(userIDCBox.Text.Trim());     //设置登录的用户号码
+                    if (recordPwdChkBox.Checked)
+                    {
+                        //记住密码                        
+                        dataOprt.ExecSQLResult("update tb_User set Remember=1 where ID=" + int.Parse(userIDCBox.Text.Trim()));
+                        //自动登录
+                        if (autoLoginChkBox.Checked)
+                            dataOprt.ExecSQLResult("update tb_User set AutoLogin=1 where ID=" +
+                                int.Parse(userIDCBox.Text.Trim()));
+                    }
+                    else
+                    {
+                        dataOprt.ExecSQLResult("update tb_User set Remember=0 where ID=" +
+                            int.Parse(userIDCBox.Text.Trim()));
+                        dataOprt.ExecSQLResult("update tb_User set AutoLogin=0 where ID=" +
+                            int.Parse(userIDCBox.Text.Trim()));
+                    }
+
+                    dataOprt.ExecSQLResult("update tb_User set Flag=1 where ID=" +
+                            int.Parse(userIDCBox.Text.Trim()));
+                    if (!mainIsOpen)
+                    {
+                        Main_Frm mainFrm = new Main_Frm();
+                        mainFrm.mAction = (bl) => mainIsOpen = bl;
+                        mainFrm.Show();
+                    }
+                    this.Visible = false;
+                }
+                else
+                    MessageBox.Show("输入的用户名或密码有误！", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //if (!mainIsOpen)
+            //{
+            //    Main_Frm mainFrm = new Main_Frm();
+            //    mainFrm.mAction = (bl) => mainIsOpen = bl;
+            //    mainFrm.Show();
+            //}
         }
 
         private void closePBox_MouseClick(object sender, MouseEventArgs e)
@@ -119,6 +184,36 @@ namespace MyQQ
             }
         }
 
-        
+        private void recordPwdChkBox_CheckedChanged(object sender, EventArgs e)
+        {            
+            if (!recordPwdChkBox.Checked)                //判断记住密码文本框是否为未选中状态
+                autoLoginChkBox.Checked = false;      //自动登录设置为未选中
+        }
+
+        private void regLab_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button== MouseButtons.Left)
+            {
+                if (!regFrmOpen)
+                {
+                    RegAccount_Frm regFrm = new RegAccount_Frm();
+                    regFrm.mAction = (bl) => regFrmOpen = bl;
+                    regFrm.Show();
+                }
+                
+            }            
+        }
+
+        private void findPwdLab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Frm_Load(object sender, EventArgs e)
+        {
+            userIDCBox.Items.Add(14020);
+            userIDCBox.Items.Add(10004);
+            userIDCBox.SelectedIndex = 0;
+        }
     }
 }

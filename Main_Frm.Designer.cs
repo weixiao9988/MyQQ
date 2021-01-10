@@ -30,20 +30,39 @@ namespace MyQQ
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("我的好友", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("陌生人", System.Windows.Forms.HorizontalAlignment.Left);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Frm));
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.minPBox = new System.Windows.Forms.PictureBox();
             this.closePBox = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.nameLab = new System.Windows.Forms.Label();
+            this.SignLab = new System.Windows.Forms.Label();
+            this.SignTBox = new System.Windows.Forms.TextBox();
+            this.headPBox = new System.Windows.Forms.PictureBox();
+            this.lvFriend = new System.Windows.Forms.ListView();
+            this.imglistHead = new System.Windows.Forms.ImageList(this.components);
+            this.imglistSmallHead = new System.Windows.Forms.ImageList(this.components);
+            this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.tbBtnInfo = new System.Windows.Forms.ToolStripButton();
+            this.tbBtnSearch = new System.Windows.Forms.ToolStripButton();
+            this.tbBtnUpFriend = new System.Windows.Forms.ToolStripButton();
+            this.tbBtnSysMsg = new System.Windows.Forms.ToolStripButton();
+            this.tbBtnExit = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.minPBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePBox)).BeginInit();
+            this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).BeginInit();
+            this.toolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // minPBox
             // 
             this.minPBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minPBox.BackColor = System.Drawing.Color.Transparent;
             this.minPBox.BackgroundImage = global::MyQQ.Properties.Resources.min;
             this.minPBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.minPBox.Location = new System.Drawing.Point(238, 0);
+            this.minPBox.Location = new System.Drawing.Point(240, 0);
             this.minPBox.Margin = new System.Windows.Forms.Padding(0);
             this.minPBox.Name = "minPBox";
             this.minPBox.Size = new System.Drawing.Size(28, 28);
@@ -57,10 +76,9 @@ namespace MyQQ
             // closePBox
             // 
             this.closePBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closePBox.BackColor = System.Drawing.Color.Transparent;
             this.closePBox.BackgroundImage = global::MyQQ.Properties.Resources.close;
             this.closePBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.closePBox.Location = new System.Drawing.Point(268, 0);
+            this.closePBox.Location = new System.Drawing.Point(270, 0);
             this.closePBox.Margin = new System.Windows.Forms.Padding(0);
             this.closePBox.Name = "closePBox";
             this.closePBox.Size = new System.Drawing.Size(28, 28);
@@ -71,24 +89,406 @@ namespace MyQQ
             this.closePBox.MouseLeave += new System.EventHandler(this.closePBox_MouseLeave);
             this.closePBox.MouseHover += new System.EventHandler(this.closePBox_MouseHover);
             // 
+            // topPanel
+            // 
+            this.topPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.topPanel.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.topPanel.Controls.Add(this.nameLab);
+            this.topPanel.Controls.Add(this.SignLab);
+            this.topPanel.Controls.Add(this.SignTBox);
+            this.topPanel.Controls.Add(this.headPBox);
+            this.topPanel.Controls.Add(this.minPBox);
+            this.topPanel.Controls.Add(this.closePBox);
+            this.topPanel.Location = new System.Drawing.Point(1, 1);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(298, 135);
+            this.topPanel.TabIndex = 4;
+            this.topPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseDown);
+            // 
+            // nameLab
+            // 
+            this.nameLab.AutoSize = true;
+            this.nameLab.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.nameLab.ForeColor = System.Drawing.Color.FloralWhite;
+            this.nameLab.Location = new System.Drawing.Point(74, 59);
+            this.nameLab.Name = "nameLab";
+            this.nameLab.Size = new System.Drawing.Size(51, 19);
+            this.nameLab.TabIndex = 7;
+            this.nameLab.Text = "label1";
+            // 
+            // SignLab
+            // 
+            this.SignLab.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SignLab.Location = new System.Drawing.Point(76, 90);
+            this.SignLab.Name = "SignLab";
+            this.SignLab.Size = new System.Drawing.Size(219, 23);
+            this.SignLab.TabIndex = 6;
+            this.SignLab.Text = "label1";
+            this.SignLab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SignLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SignLab_MouseClick);
+            this.SignLab.MouseLeave += new System.EventHandler(this.SignLab_MouseLeave);
+            this.SignLab.MouseHover += new System.EventHandler(this.SignLab_MouseHover);
+            // 
+            // SignTBox
+            // 
+            this.SignTBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.SignTBox.Location = new System.Drawing.Point(77, 90);
+            this.SignTBox.Name = "SignTBox";
+            this.SignTBox.Size = new System.Drawing.Size(218, 23);
+            this.SignTBox.TabIndex = 5;
+            this.SignTBox.Visible = false;
+            this.SignTBox.LostFocus += new System.EventHandler(this.SignTBox_Leave);
+            // 
+            // headPBox
+            // 
+            this.headPBox.Location = new System.Drawing.Point(4, 61);
+            this.headPBox.Name = "headPBox";
+            this.headPBox.Size = new System.Drawing.Size(66, 66);
+            this.headPBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headPBox.TabIndex = 4;
+            this.headPBox.TabStop = false;
+            // 
+            // lvFriend
+            // 
+            this.lvFriend.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvFriend.AutoArrange = false;
+            this.lvFriend.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvFriend.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            listViewGroup3.Header = "我的好友";
+            listViewGroup3.Name = "lvGroupFriend";
+            listViewGroup4.Header = "陌生人";
+            listViewGroup4.Name = "lvGroupStranger";
+            this.lvFriend.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup3,
+            listViewGroup4});
+            this.lvFriend.HideSelection = false;
+            this.lvFriend.LargeImageList = this.imglistHead;
+            this.lvFriend.Location = new System.Drawing.Point(1, 137);
+            this.lvFriend.MultiSelect = false;
+            this.lvFriend.Name = "lvFriend";
+            this.lvFriend.Size = new System.Drawing.Size(298, 395);
+            this.lvFriend.SmallImageList = this.imglistSmallHead;
+            this.lvFriend.StateImageList = this.imglistSmallHead;
+            this.lvFriend.TabIndex = 5;
+            this.lvFriend.UseCompatibleStateImageBehavior = false;
+            this.lvFriend.View = System.Windows.Forms.View.Tile;
+            this.lvFriend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvFrend_MouseDown);
+            // 
+            // imglistHead
+            // 
+            this.imglistHead.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistHead.ImageStream")));
+            this.imglistHead.TransparentColor = System.Drawing.Color.Empty;
+            this.imglistHead.Images.SetKeyName(0, "1.bmp");
+            this.imglistHead.Images.SetKeyName(1, "2.bmp");
+            this.imglistHead.Images.SetKeyName(2, "3.bmp");
+            this.imglistHead.Images.SetKeyName(3, "4.bmp");
+            this.imglistHead.Images.SetKeyName(4, "5.bmp");
+            this.imglistHead.Images.SetKeyName(5, "6.bmp");
+            this.imglistHead.Images.SetKeyName(6, "7.bmp");
+            this.imglistHead.Images.SetKeyName(7, "8.bmp");
+            this.imglistHead.Images.SetKeyName(8, "9.bmp");
+            this.imglistHead.Images.SetKeyName(9, "10.bmp");
+            this.imglistHead.Images.SetKeyName(10, "11.bmp");
+            this.imglistHead.Images.SetKeyName(11, "12.bmp");
+            this.imglistHead.Images.SetKeyName(12, "13.bmp");
+            this.imglistHead.Images.SetKeyName(13, "14.bmp");
+            this.imglistHead.Images.SetKeyName(14, "15.bmp");
+            this.imglistHead.Images.SetKeyName(15, "16.bmp");
+            this.imglistHead.Images.SetKeyName(16, "17.bmp");
+            this.imglistHead.Images.SetKeyName(17, "18.bmp");
+            this.imglistHead.Images.SetKeyName(18, "19.bmp");
+            this.imglistHead.Images.SetKeyName(19, "20.bmp");
+            this.imglistHead.Images.SetKeyName(20, "21.bmp");
+            this.imglistHead.Images.SetKeyName(21, "22.bmp");
+            this.imglistHead.Images.SetKeyName(22, "23.bmp");
+            this.imglistHead.Images.SetKeyName(23, "24.bmp");
+            this.imglistHead.Images.SetKeyName(24, "25.bmp");
+            this.imglistHead.Images.SetKeyName(25, "26.bmp");
+            this.imglistHead.Images.SetKeyName(26, "27.bmp");
+            this.imglistHead.Images.SetKeyName(27, "28.bmp");
+            this.imglistHead.Images.SetKeyName(28, "29.bmp");
+            this.imglistHead.Images.SetKeyName(29, "30.bmp");
+            this.imglistHead.Images.SetKeyName(30, "31.bmp");
+            this.imglistHead.Images.SetKeyName(31, "32.bmp");
+            this.imglistHead.Images.SetKeyName(32, "33.bmp");
+            this.imglistHead.Images.SetKeyName(33, "34.bmp");
+            this.imglistHead.Images.SetKeyName(34, "35.bmp");
+            this.imglistHead.Images.SetKeyName(35, "36.bmp");
+            this.imglistHead.Images.SetKeyName(36, "37.bmp");
+            this.imglistHead.Images.SetKeyName(37, "38.bmp");
+            this.imglistHead.Images.SetKeyName(38, "39.bmp");
+            this.imglistHead.Images.SetKeyName(39, "40.bmp");
+            this.imglistHead.Images.SetKeyName(40, "41.bmp");
+            this.imglistHead.Images.SetKeyName(41, "42.bmp");
+            this.imglistHead.Images.SetKeyName(42, "43.bmp");
+            this.imglistHead.Images.SetKeyName(43, "44.bmp");
+            this.imglistHead.Images.SetKeyName(44, "45.bmp");
+            this.imglistHead.Images.SetKeyName(45, "46.bmp");
+            this.imglistHead.Images.SetKeyName(46, "47.bmp");
+            this.imglistHead.Images.SetKeyName(47, "48.bmp");
+            this.imglistHead.Images.SetKeyName(48, "49.bmp");
+            this.imglistHead.Images.SetKeyName(49, "50.bmp");
+            this.imglistHead.Images.SetKeyName(50, "51.bmp");
+            this.imglistHead.Images.SetKeyName(51, "52.bmp");
+            this.imglistHead.Images.SetKeyName(52, "53.bmp");
+            this.imglistHead.Images.SetKeyName(53, "54.bmp");
+            this.imglistHead.Images.SetKeyName(54, "55.bmp");
+            this.imglistHead.Images.SetKeyName(55, "56.bmp");
+            this.imglistHead.Images.SetKeyName(56, "57.bmp");
+            this.imglistHead.Images.SetKeyName(57, "58.bmp");
+            this.imglistHead.Images.SetKeyName(58, "59.bmp");
+            this.imglistHead.Images.SetKeyName(59, "60.bmp");
+            this.imglistHead.Images.SetKeyName(60, "61.bmp");
+            this.imglistHead.Images.SetKeyName(61, "62.bmp");
+            this.imglistHead.Images.SetKeyName(62, "63.bmp");
+            this.imglistHead.Images.SetKeyName(63, "64.bmp");
+            this.imglistHead.Images.SetKeyName(64, "65.bmp");
+            this.imglistHead.Images.SetKeyName(65, "66.bmp");
+            this.imglistHead.Images.SetKeyName(66, "67.bmp");
+            this.imglistHead.Images.SetKeyName(67, "68.bmp");
+            this.imglistHead.Images.SetKeyName(68, "69.bmp");
+            this.imglistHead.Images.SetKeyName(69, "70.bmp");
+            this.imglistHead.Images.SetKeyName(70, "71.bmp");
+            this.imglistHead.Images.SetKeyName(71, "72.bmp");
+            this.imglistHead.Images.SetKeyName(72, "73.bmp");
+            this.imglistHead.Images.SetKeyName(73, "74.bmp");
+            this.imglistHead.Images.SetKeyName(74, "75.bmp");
+            this.imglistHead.Images.SetKeyName(75, "76.bmp");
+            this.imglistHead.Images.SetKeyName(76, "77.bmp");
+            this.imglistHead.Images.SetKeyName(77, "78.bmp");
+            this.imglistHead.Images.SetKeyName(78, "79.bmp");
+            this.imglistHead.Images.SetKeyName(79, "80.bmp");
+            this.imglistHead.Images.SetKeyName(80, "81.bmp");
+            this.imglistHead.Images.SetKeyName(81, "82.bmp");
+            this.imglistHead.Images.SetKeyName(82, "83.bmp");
+            this.imglistHead.Images.SetKeyName(83, "84.bmp");
+            this.imglistHead.Images.SetKeyName(84, "85.bmp");
+            this.imglistHead.Images.SetKeyName(85, "86.bmp");
+            this.imglistHead.Images.SetKeyName(86, "87.bmp");
+            this.imglistHead.Images.SetKeyName(87, "88.bmp");
+            this.imglistHead.Images.SetKeyName(88, "89.bmp");
+            this.imglistHead.Images.SetKeyName(89, "90.bmp");
+            this.imglistHead.Images.SetKeyName(90, "91.bmp");
+            this.imglistHead.Images.SetKeyName(91, "92.bmp");
+            this.imglistHead.Images.SetKeyName(92, "93.bmp");
+            this.imglistHead.Images.SetKeyName(93, "94.bmp");
+            this.imglistHead.Images.SetKeyName(94, "95.bmp");
+            this.imglistHead.Images.SetKeyName(95, "96.bmp");
+            this.imglistHead.Images.SetKeyName(96, "97.bmp");
+            this.imglistHead.Images.SetKeyName(97, "98.bmp");
+            this.imglistHead.Images.SetKeyName(98, "99.bmp");
+            this.imglistHead.Images.SetKeyName(99, "100.bmp");
+            this.imglistHead.Images.SetKeyName(100, "back.bmp");
+            // 
+            // imglistSmallHead
+            // 
+            this.imglistSmallHead.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistSmallHead.ImageStream")));
+            this.imglistSmallHead.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglistSmallHead.Images.SetKeyName(0, "1-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(1, "2-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(2, "3-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(3, "4-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(4, "5-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(5, "6-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(6, "7-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(7, "8-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(8, "9-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(9, "10-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(10, "11-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(11, "12-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(12, "13-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(13, "14-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(14, "15-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(15, "16-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(16, "17-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(17, "18-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(18, "19-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(19, "20-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(20, "21-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(21, "22-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(22, "23-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(23, "24-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(24, "25-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(25, "26-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(26, "27-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(27, "28-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(28, "29-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(29, "30-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(30, "31-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(31, "32-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(32, "33-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(33, "34-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(34, "35-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(35, "36-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(36, "37-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(37, "38-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(38, "39-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(39, "40-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(40, "41-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(41, "42-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(42, "43-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(43, "44-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(44, "45-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(45, "46-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(46, "47-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(47, "48-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(48, "49-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(49, "50-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(50, "51-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(51, "52-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(52, "53-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(53, "54-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(54, "55-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(55, "56-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(56, "57-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(57, "58-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(58, "59-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(59, "60-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(60, "61-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(61, "62-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(62, "63-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(63, "64-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(64, "65-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(65, "66-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(66, "67-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(67, "68-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(68, "69-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(69, "70-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(70, "71-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(71, "72-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(72, "73-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(73, "74-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(74, "75-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(75, "76-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(76, "77-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(77, "78-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(78, "79-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(79, "80-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(80, "81-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(81, "82-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(82, "83-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(83, "84-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(84, "85-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(85, "86-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(86, "87-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(87, "88-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(88, "89-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(89, "90-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(90, "91-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(91, "92-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(92, "93-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(93, "94-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(94, "95-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(95, "96-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(96, "97-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(97, "98-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(98, "99-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(99, "100-1.bmp");
+            this.imglistSmallHead.Images.SetKeyName(100, "back.bmp");
+            // 
+            // toolBar
+            // 
+            this.toolBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolBar.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolBar.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tbBtnInfo,
+            this.tbBtnSearch,
+            this.tbBtnUpFriend,
+            this.tbBtnSysMsg,
+            this.tbBtnExit});
+            this.toolBar.Location = new System.Drawing.Point(1, 508);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolBar.Size = new System.Drawing.Size(298, 27);
+            this.toolBar.TabIndex = 6;
+            this.toolBar.Text = "toolStrip1";
+            // 
+            // tbBtnInfo
+            // 
+            this.tbBtnInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbBtnInfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnInfo.Image = global::MyQQ.Properties.Resources.user;
+            this.tbBtnInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbBtnInfo.Name = "tbBtnInfo";
+            this.tbBtnInfo.Size = new System.Drawing.Size(24, 24);
+            this.tbBtnInfo.Text = "个人信息";
+            this.tbBtnInfo.Click += new System.EventHandler(this.tbBtnInfo_Click);
+            // 
+            // tbBtnSearch
+            // 
+            this.tbBtnSearch.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnSearch.Image = global::MyQQ.Properties.Resources.search;
+            this.tbBtnSearch.ImageTransparentColor = System.Drawing.SystemColors.Control;
+            this.tbBtnSearch.Name = "tbBtnSearch";
+            this.tbBtnSearch.Size = new System.Drawing.Size(59, 24);
+            this.tbBtnSearch.Text = "查找";
+            this.tbBtnSearch.Click += new System.EventHandler(this.tbBtnSearch_Click);
+            // 
+            // tbBtnUpFriend
+            // 
+            this.tbBtnUpFriend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbBtnUpFriend.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnUpFriend.Image = global::MyQQ.Properties.Resources.up;
+            this.tbBtnUpFriend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbBtnUpFriend.Name = "tbBtnUpFriend";
+            this.tbBtnUpFriend.Size = new System.Drawing.Size(24, 24);
+            this.tbBtnUpFriend.Text = "更新好友列表";
+            this.tbBtnUpFriend.Click += new System.EventHandler(this.tbBtnUpFriend_Click);
+            // 
+            // tbBtnSysMsg
+            // 
+            this.tbBtnSysMsg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbBtnSysMsg.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnSysMsg.Image = global::MyQQ.Properties.Resources.message;
+            this.tbBtnSysMsg.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbBtnSysMsg.Name = "tbBtnSysMsg";
+            this.tbBtnSysMsg.Size = new System.Drawing.Size(24, 24);
+            this.tbBtnSysMsg.Text = "系统消息";
+            this.tbBtnSysMsg.Click += new System.EventHandler(this.tbBtnSysMsg_Click);
+            // 
+            // tbBtnExit
+            // 
+            this.tbBtnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tbBtnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnExit.Image = global::MyQQ.Properties.Resources.exit;
+            this.tbBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tbBtnExit.Name = "tbBtnExit";
+            this.tbBtnExit.Size = new System.Drawing.Size(24, 24);
+            this.tbBtnExit.Text = "退出";
+            this.tbBtnExit.Click += new System.EventHandler(this.tbBtnExit_Click);
+            // 
             // Main_Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.ClientSize = new System.Drawing.Size(296, 521);
-            this.Controls.Add(this.minPBox);
-            this.Controls.Add(this.closePBox);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(300, 536);
+            this.Controls.Add(this.toolBar);
+            this.Controls.Add(this.lvFriend);
+            this.Controls.Add(this.topPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(300, 0);
             this.Name = "Main_Frm";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.Text = "Main_Frm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Frm_FormClosed);
             this.Load += new System.EventHandler(this.Main_Frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.minPBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePBox)).EndInit();
+            this.topPanel.ResumeLayout(false);
+            this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).EndInit();
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +497,19 @@ namespace MyQQ
         private System.Windows.Forms.PictureBox minPBox;
         private System.Windows.Forms.PictureBox closePBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel topPanel;
+        private System.Windows.Forms.ListView lvFriend;
+        private System.Windows.Forms.ImageList imglistSmallHead;
+        private System.Windows.Forms.ImageList imglistHead;
+        private System.Windows.Forms.PictureBox headPBox;
+        private System.Windows.Forms.Label SignLab;
+        private System.Windows.Forms.TextBox SignTBox;
+        private System.Windows.Forms.Label nameLab;
+        private System.Windows.Forms.ToolStrip toolBar;
+        private System.Windows.Forms.ToolStripButton tbBtnInfo;
+        private System.Windows.Forms.ToolStripButton tbBtnSearch;
+        private System.Windows.Forms.ToolStripButton tbBtnUpFriend;
+        private System.Windows.Forms.ToolStripButton tbBtnSysMsg;
+        private System.Windows.Forms.ToolStripButton tbBtnExit;
     }
 }

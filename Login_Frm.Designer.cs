@@ -96,6 +96,7 @@ namespace MyQQ
             this.userIDCBox.Name = "userIDCBox";
             this.userIDCBox.Size = new System.Drawing.Size(221, 31);
             this.userIDCBox.TabIndex = 1;
+            this.userIDCBox.SelectedIndexChanged += new System.EventHandler(this.userIDCBox_SelectedIndexChanged);
             // 
             // autoLoginChkBox
             // 
@@ -124,6 +125,7 @@ namespace MyQQ
             this.recordPwdChkBox.TabIndex = 4;
             this.recordPwdChkBox.Text = "记住密码";
             this.recordPwdChkBox.UseVisualStyleBackColor = false;
+            this.recordPwdChkBox.CheckedChanged += new System.EventHandler(this.recordPwdChkBox_CheckedChanged);
             // 
             // findPwdLab
             // 
@@ -137,6 +139,7 @@ namespace MyQQ
             this.findPwdLab.Size = new System.Drawing.Size(65, 20);
             this.findPwdLab.TabIndex = 5;
             this.findPwdLab.Text = "找回密码";
+            this.findPwdLab.Click += new System.EventHandler(this.findPwdLab_Click);
             // 
             // loginBtn
             // 
@@ -164,6 +167,7 @@ namespace MyQQ
             this.regLab.TabIndex = 6;
             this.regLab.Text = "注册账号";
             this.regLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.regLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.regLab_MouseClick);
             // 
             // Login_Frm
             // 
@@ -185,6 +189,7 @@ namespace MyQQ
             this.Name = "Login_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
+            this.Load += new System.EventHandler(this.Login_Frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closePBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minPBox)).EndInit();
             this.ResumeLayout(false);
