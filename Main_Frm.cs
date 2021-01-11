@@ -27,7 +27,7 @@ namespace MyQQ
 
             //控制ListVIew的行距和列距
             //70为行距，120为列距（跟图片大小有关）
-            PubCls.SendMessage(this.lvFriend.Handle, PubCls.LVM_SETICONAPACING, 0, 0x10000 * 90 + 130);
+            PubCls.SendMessage(this.lvFriend.Handle, PubCls.LVM_SETICONAPACING, 0, 0x10000 * 70 + 130);
         }
 
         private void Main_Frm_Load(object sender, EventArgs e)

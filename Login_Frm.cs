@@ -213,7 +213,7 @@ namespace MyQQ
         {
             userIDCBox.Items.Add(14020);
             userIDCBox.Items.Add(10004);
-            userIDCBox.SelectedIndex = 0;
+            userIDCBox.SelectedIndex = 1;
         }
     }
 }

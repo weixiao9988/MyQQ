@@ -30,8 +30,8 @@ namespace MyQQ
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("我的好友", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("陌生人", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("我的好友", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("陌生人", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Frm));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.minPBox = new System.Windows.Forms.PictureBox();
@@ -156,14 +156,14 @@ namespace MyQQ
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvFriend.AutoArrange = false;
             this.lvFriend.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lvFriend.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
-            listViewGroup3.Header = "我的好友";
-            listViewGroup3.Name = "lvGroupFriend";
-            listViewGroup4.Header = "陌生人";
-            listViewGroup4.Name = "lvGroupStranger";
+            this.lvFriend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            listViewGroup1.Header = "我的好友";
+            listViewGroup1.Name = "lvGroupFriend";
+            listViewGroup2.Header = "陌生人";
+            listViewGroup2.Name = "lvGroupStranger";
             this.lvFriend.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.lvFriend.HideSelection = false;
             this.lvFriend.LargeImageList = this.imglistHead;
             this.lvFriend.Location = new System.Drawing.Point(1, 137);
@@ -391,8 +391,9 @@ namespace MyQQ
             // 
             // toolBar
             // 
+            this.toolBar.BackColor = System.Drawing.SystemColors.Control;
             this.toolBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolBar.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.toolBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -411,7 +412,7 @@ namespace MyQQ
             // tbBtnInfo
             // 
             this.tbBtnInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbBtnInfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.tbBtnInfo.Image = global::MyQQ.Properties.Resources.user;
             this.tbBtnInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbBtnInfo.Name = "tbBtnInfo";
@@ -421,18 +422,18 @@ namespace MyQQ
             // 
             // tbBtnSearch
             // 
-            this.tbBtnSearch.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.tbBtnSearch.Image = global::MyQQ.Properties.Resources.search;
             this.tbBtnSearch.ImageTransparentColor = System.Drawing.SystemColors.Control;
             this.tbBtnSearch.Name = "tbBtnSearch";
-            this.tbBtnSearch.Size = new System.Drawing.Size(59, 24);
+            this.tbBtnSearch.Size = new System.Drawing.Size(62, 24);
             this.tbBtnSearch.Text = "查找";
             this.tbBtnSearch.Click += new System.EventHandler(this.tbBtnSearch_Click);
             // 
             // tbBtnUpFriend
             // 
             this.tbBtnUpFriend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbBtnUpFriend.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnUpFriend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.tbBtnUpFriend.Image = global::MyQQ.Properties.Resources.up;
             this.tbBtnUpFriend.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbBtnUpFriend.Name = "tbBtnUpFriend";
@@ -443,7 +444,7 @@ namespace MyQQ
             // tbBtnSysMsg
             // 
             this.tbBtnSysMsg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbBtnSysMsg.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnSysMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.tbBtnSysMsg.Image = global::MyQQ.Properties.Resources.message;
             this.tbBtnSysMsg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbBtnSysMsg.Name = "tbBtnSysMsg";
@@ -454,7 +455,7 @@ namespace MyQQ
             // tbBtnExit
             // 
             this.tbBtnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tbBtnExit.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.5F);
+            this.tbBtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
             this.tbBtnExit.Image = global::MyQQ.Properties.Resources.exit;
             this.tbBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbBtnExit.Name = "tbBtnExit";
