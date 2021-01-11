@@ -27,7 +27,7 @@ namespace MyQQ
 
             //控制ListVIew的行距和列距
             //70为行距，120为列距（跟图片大小有关）
-            PubCls.SendMessage(this.lvFriend.Handle, PubCls.LVM_SETICONAPACING, 0, 0x10000 * 70 + 130);
+            PubCls.SendMessage(this.friendLv.Handle, PubCls.LVM_SETICONAPACING, 0, 0x10000 * 70 + 130);
         }
 
         private void Main_Frm_Load(object sender, EventArgs e)
@@ -57,7 +57,7 @@ namespace MyQQ
                 //记录自己的头像ID
                 headID = Convert.ToInt32(dtRead["HeadID"]);
                 //显示个性签名
-                SignLab.Text = dtRead["Sign"].ToString();
+                signLab.Text = dtRead["Sign"].ToString();
             }
             //关闭读取器
             dtRead.Close();
@@ -65,7 +65,7 @@ namespace MyQQ
             //设置窗体标题为当前用户账号
             this.Text = PubCls.loginID.ToString();
             //显示用户头像
-            headPBox.Image = imglistHead.Images[headID];
+            headPBox.Image = listHeadImg.Images[headID];
             //显示昵称及账号
             nameLab.Text = nickName + "(" + PubCls.loginID + ")";
         }
@@ -75,30 +75,34 @@ namespace MyQQ
         ///</summary>
         private void ShowFriendList()
         {
-            lvFriend.Items.Clear();
+            friendLv.Items.Clear();
             //定义查找好友的SQL语句
             string sqlStr= "select FriendID,NickName,HeadID,Flag from tb_User,tb_Friend where " +
                 "tb_Friend.HostID=" + PubCls.loginID + " and tb_User.ID=tb_Friend.FriendID";
-            SqlDataReader dtRead = dataOprt.GetDataReader(sqlStr);
+            SqlDataReader dtRead = dataOprt.GetDataReader(sqlStr);            
             //定义变量，用来记录添加到ListView中的项索引
-            int i = lvFriend.Items.Count;
+            int i = friendLv.Items.Count;
+
+            friendLv.BeginUpdate();
             //循环添加好友列表
             while (dtRead.Read())
             {
+                ListViewItem lvi = new ListViewItem();
                 strFlag = dtRead["Flag"].ToString() == "0" ? " [离线]" : " [在线]";
                 //记录好友昵称
                 string strTemp = dtRead["NickName"].ToString();
-                //对好友昵称进行处理
-                string strFriendName = strTemp.Length < 9 ? strTemp.PadLeft(9, ' ') : (strTemp.Substring(0, 2) + "...").PadLeft(9, ' ');
 
-                //向ListView中添加项，Name:好友ID，值：昵称，要显示的头像
-                lvFriend.Items.Add(dtRead["FriendID"].ToString(), strTemp + strFlag, (int)dtRead["HeadID"]);
-                lvFriend.Alignment = ListViewAlignment.Left;
-                lvFriend.Items[i].Group = lvFriend.Groups[0];//设置项的分组为我的好友
+                lvi.ImageIndex = (int)dtRead["HeadID"];
+                lvi.Text = dtRead["FriendID"].ToString() + " " + strTemp + strFlag;
+                friendLv.Items.Add(lvi);
+
+                ////对好友昵称进行处理
+                //string strFriendName = strTemp.Length < 9 ? strTemp.PadLeft(9, ' ') : (strTemp.Substring(0, 2) + "...").PadLeft(9, ' ');
+                                
+                friendLv.Items[i].Group = friendLv.Groups[0];//设置项的分组为我的好友
                 i++;//临时变量加1
-
             }
-
+            friendLv.EndUpdate();
         }
 
         #region
@@ -198,7 +202,7 @@ namespace MyQQ
                     break;
             }
         }
-
+               
         private void topPanel_MouseDown(object sender, MouseEventArgs e)
         {
             //用来释放被当前线程中某个窗口捕获的光标
@@ -207,8 +211,20 @@ namespace MyQQ
             PubCls.SendMessage(this.Handle, PubCls.WM_SYSCOMMAND, PubCls.SC_MOVE + PubCls.HTCAPTION, 0);
         }
 
-        private void lvFrend_MouseDown(object sender, MouseEventArgs e)
+        private void friendLv_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right && friendLv.SelectedItems.Count > 0)
+            {
+                //textBox1.Text = (e.X+this.Left).ToString() + "_" + (e.Y+this.Top).ToString();
+
+                int x0 = e.X + this.Left + 10;
+                int y0 = e.Y + this.Top + friendLv.Top;
+                friendListCms.Show(new Point(x0, y0));
+            }
+        }
+
+        private void frendLv_MouseDown(object sender, MouseEventArgs e)
+        {            
             //用来释放被当前线程中某个窗口捕获的光标
             PubCls.ReleaseCapture();
             //向Windows发送拖动窗体的消息
@@ -218,27 +234,27 @@ namespace MyQQ
 
         private void SignLab_MouseHover(object sender, EventArgs e)
         {
-            SignLab.BorderStyle = BorderStyle.FixedSingle;
+            signLab.BorderStyle = BorderStyle.FixedSingle;
         }
 
         private void SignLab_MouseLeave(object sender, EventArgs e)
         {
-            SignLab.BorderStyle = BorderStyle.None;
+            signLab.BorderStyle = BorderStyle.None;
         }
 
         private void SignLab_MouseClick(object sender, MouseEventArgs e)
         {
-            SignLab.Visible = false;
-            SignTBox.Text = SignLab.Text;
-            SignTBox.Visible = true;
-            SignTBox.Select();
+            signLab.Visible = false;
+            signTBox.Text = signLab.Text;
+            signTBox.Visible = true;
+            signTBox.Select();
         }
 
         private void SignTBox_Leave(object sender, EventArgs e)
         {
-            SignLab.Text = SignTBox.Text;
-            SignTBox.Visible = false;
-            SignLab.Visible = true;
+            signLab.Text = signTBox.Text;
+            signTBox.Visible = false;
+            signLab.Visible = true;
 
         }
 
@@ -276,7 +292,6 @@ namespace MyQQ
             Application.ExitThread();//退出当前应用程序
         }
 
-
-
+        
     }
 }

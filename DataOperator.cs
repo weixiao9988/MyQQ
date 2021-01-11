@@ -8,10 +8,15 @@ namespace MyQQ
     class DataOperator
     {
         //数据库连接字符串
-        //private static string cnnStr = @"Data Source=WEIXIAO\MYSQLSERVER;Database=db_MyQQ;User ID=sa;Pwd=;";
-        //private static string cnnStr= @"Data Source = (localdb)\ProjectsV13;Database=db_MyQQ;User ID=sa;Pwd=;";
-        private static string cnnStr= @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_MyQQ;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        
+        private static string cnnStr = @"Data Source=WEIXIAO\MYSQLSERVER;Database=db_MyQQ;User ID=sa;Pwd=;";
+        //private static string cnnStr= @"Data Source=(localdb)\MSSQLLocalDB;"+
+        //    "Initial Catalog=db_MyQQ;"+
+        //    "Integrated Security=True;"+
+        //    "Connect Timeout=30;"+
+        //    "Encrypt=False;"+
+        //    "TrustServerCertificate=False;"+
+        //    "ApplicationIntent=ReadWrite;"+
+        //    "MultiSubnetFailover=False";        
         //private static string cnnStr = "Persist Security Info=False;"
         //                                + "Integrated Security=SSPI;"
         //                                + "database=db_MyQQ;"
