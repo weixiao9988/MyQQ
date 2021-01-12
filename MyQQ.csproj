@@ -53,6 +53,12 @@
     <Compile Include="AddFriend_Frm.Designer.cs">
       <DependentUpon>AddFriend_Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Chat_Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Chat_Frm.Designer.cs">
+      <DependentUpon>Chat_Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataOperator.cs" />
     <Compile Include="EditInfo_Frm.cs">
       <SubType>Form</SubType>
@@ -81,8 +87,17 @@
     <Compile Include="RegAccount_Frm.Designer.cs">
       <DependentUpon>RegAccount_Frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Remind_Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remind_Frm.Designer.cs">
+      <DependentUpon>Remind_Frm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddFriend_Frm.resx">
       <DependentUpon>AddFriend_Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat_Frm.resx">
+      <DependentUpon>Chat_Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditInfo_Frm.resx">
       <DependentUpon>EditInfo_Frm.cs</DependentUpon>
@@ -100,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegAccount_Frm.resx">
       <DependentUpon>RegAccount_Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Remind_Frm.resx">
+      <DependentUpon>Remind_Frm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
