@@ -483,7 +483,10 @@ namespace MyQQ
 
         private void tbBtnExit_Click(object sender, EventArgs e)
         {
-            Application.ExitThread();//退出当前应用程序
+            //弹出确定对话框
+            DialogResult result = MessageBox.Show("确实要退出吗？", "确认", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result==DialogResult.Yes)
+                Application.ExitThread();//退出当前应用程序
         }
 
         //显示个人信息
@@ -499,7 +502,7 @@ namespace MyQQ
             tsMenuSHead.Text = friendLv.View == View.Tile ? "小头像" : "大头像";
         }
 
-
+        //添加好友 
         private void tsMenuAdd_Click(object sender, EventArgs e)
         {
 

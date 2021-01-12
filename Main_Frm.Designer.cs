@@ -30,8 +30,8 @@ namespace MyQQ
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("我的好友", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("陌生人", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("我的好友", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("陌生人", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Frm));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.topPanel = new System.Windows.Forms.Panel();
@@ -40,15 +40,15 @@ namespace MyQQ
             this.signLab = new System.Windows.Forms.Label();
             this.signTBox = new System.Windows.Forms.TextBox();
             this.friendLv = new System.Windows.Forms.ListView();
-            this.listHeadImg = new System.Windows.Forms.ImageList(this.components);
-            this.listSmallHeadImg = new System.Windows.Forms.ImageList(this.components);
-            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.friendListCms = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsMenuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuSHead = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.listHeadImg = new System.Windows.Forms.ImageList(this.components);
+            this.listSmallHeadImg = new System.Windows.Forms.ImageList(this.components);
+            this.toolBar = new System.Windows.Forms.ToolStrip();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.tsMenuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.imglistMessage = new System.Windows.Forms.ImageList(this.components);
             this.tbBtnInfo = new System.Windows.Forms.ToolStripButton();
             this.tbBtnSearch = new System.Windows.Forms.ToolStripButton();
@@ -59,8 +59,8 @@ namespace MyQQ
             this.minPBox = new System.Windows.Forms.PictureBox();
             this.closePBox = new System.Windows.Forms.PictureBox();
             this.topPanel.SuspendLayout();
-            this.toolBar.SuspendLayout();
             this.friendListCms.SuspendLayout();
+            this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headPBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minPBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePBox)).BeginInit();
@@ -134,13 +134,13 @@ namespace MyQQ
             this.friendLv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.friendLv.ContextMenuStrip = this.friendListCms;
             this.friendLv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            listViewGroup1.Header = "我的好友";
-            listViewGroup1.Name = "lvGroupFriend";
-            listViewGroup2.Header = "陌生人";
-            listViewGroup2.Name = "lvGroupStranger";
+            listViewGroup3.Header = "我的好友";
+            listViewGroup3.Name = "lvGroupFriend";
+            listViewGroup4.Header = "陌生人";
+            listViewGroup4.Name = "lvGroupStranger";
             this.friendLv.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.friendLv.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.friendLv.HideSelection = false;
             this.friendLv.HoverSelection = true;
@@ -156,6 +156,46 @@ namespace MyQQ
             this.friendLv.View = System.Windows.Forms.View.Tile;
             this.friendLv.MouseClick += new System.Windows.Forms.MouseEventHandler(this.friendLv_MouseClick);
             this.friendLv.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frendLv_MouseDown);
+            // 
+            // friendListCms
+            // 
+            this.friendListCms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuShowInfo,
+            this.tsMenuSHead,
+            this.tsMenuAdd,
+            this.tsMenuDel});
+            this.friendListCms.Name = "friendListCms";
+            this.friendListCms.Size = new System.Drawing.Size(125, 92);
+            // 
+            // tsMenuShowInfo
+            // 
+            this.tsMenuShowInfo.Enabled = false;
+            this.tsMenuShowInfo.Name = "tsMenuShowInfo";
+            this.tsMenuShowInfo.Size = new System.Drawing.Size(124, 22);
+            this.tsMenuShowInfo.Text = "显示信息";
+            this.tsMenuShowInfo.Click += new System.EventHandler(this.tsMenuShowInfo_Click);
+            // 
+            // tsMenuSHead
+            // 
+            this.tsMenuSHead.Name = "tsMenuSHead";
+            this.tsMenuSHead.Size = new System.Drawing.Size(124, 22);
+            this.tsMenuSHead.Text = "小头像";
+            this.tsMenuSHead.Click += new System.EventHandler(this.tsMenuSHead_Click);
+            // 
+            // tsMenuAdd
+            // 
+            this.tsMenuAdd.Name = "tsMenuAdd";
+            this.tsMenuAdd.Size = new System.Drawing.Size(124, 22);
+            this.tsMenuAdd.Text = "加为好友";
+            this.tsMenuAdd.Click += new System.EventHandler(this.tsMenuAdd_Click);
+            // 
+            // tsMenuDel
+            // 
+            this.tsMenuDel.Enabled = false;
+            this.tsMenuDel.Name = "tsMenuDel";
+            this.tsMenuDel.Size = new System.Drawing.Size(124, 22);
+            this.tsMenuDel.Text = "删除";
+            this.tsMenuDel.Click += new System.EventHandler(this.tsMenuDel_Click);
             // 
             // listHeadImg
             // 
@@ -389,50 +429,10 @@ namespace MyQQ
             this.toolBar.TabIndex = 6;
             this.toolBar.Text = "toolStrip1";
             // 
-            // friendListCms
-            // 
-            this.friendListCms.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuShowInfo,
-            this.tsMenuSHead,
-            this.tsMenuAdd,
-            this.tsMenuDel});
-            this.friendListCms.Name = "friendListCms";
-            this.friendListCms.Size = new System.Drawing.Size(181, 114);
-            // 
-            // tsMenuSHead
-            // 
-            this.tsMenuSHead.Name = "tsMenuSHead";
-            this.tsMenuSHead.Size = new System.Drawing.Size(180, 22);
-            this.tsMenuSHead.Text = "小头像";
-            this.tsMenuSHead.Click += new System.EventHandler(this.tsMenuSHead_Click);
-            // 
-            // tsMenuAdd
-            // 
-            this.tsMenuAdd.Name = "tsMenuAdd";
-            this.tsMenuAdd.Size = new System.Drawing.Size(180, 22);
-            this.tsMenuAdd.Text = "加为好友";
-            this.tsMenuAdd.Click += new System.EventHandler(this.tsMenuAdd_Click);
-            // 
-            // tsMenuDel
-            // 
-            this.tsMenuDel.Enabled = false;
-            this.tsMenuDel.Name = "tsMenuDel";
-            this.tsMenuDel.Size = new System.Drawing.Size(180, 22);
-            this.tsMenuDel.Text = "删除";
-            this.tsMenuDel.Click += new System.EventHandler(this.tsMenuDel_Click);
-            // 
             // notifyIcon1
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
-            // 
-            // tsMenuShowInfo
-            // 
-            this.tsMenuShowInfo.Enabled = false;
-            this.tsMenuShowInfo.Name = "tsMenuShowInfo";
-            this.tsMenuShowInfo.Size = new System.Drawing.Size(180, 22);
-            this.tsMenuShowInfo.Text = "显示信息";
-            this.tsMenuShowInfo.Click += new System.EventHandler(this.tsMenuShowInfo_Click);
             // 
             // imglistMessage
             // 
@@ -477,7 +477,7 @@ namespace MyQQ
             // 
             this.tbBtnSysMsg.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tbBtnSysMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.tbBtnSysMsg.Image = global::MyQQ.Properties.Resources.message;
+            this.tbBtnSysMsg.Image = global::MyQQ.Properties.Resources.info;
             this.tbBtnSysMsg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tbBtnSysMsg.Name = "tbBtnSysMsg";
             this.tbBtnSysMsg.Size = new System.Drawing.Size(24, 24);
@@ -547,6 +547,7 @@ namespace MyQQ
             this.Controls.Add(this.friendLv);
             this.Controls.Add(this.topPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(310, 0);
             this.Name = "Main_Frm";
@@ -556,9 +557,9 @@ namespace MyQQ
             this.Load += new System.EventHandler(this.Main_Frm_Load);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
+            this.friendListCms.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
-            this.friendListCms.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.headPBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minPBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePBox)).EndInit();
