@@ -30,8 +30,6 @@ namespace MyQQ
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.closePBox = new System.Windows.Forms.PictureBox();
-            this.minPBox = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.userPWDTBox = new System.Windows.Forms.TextBox();
             this.userIDCBox = new System.Windows.Forms.ComboBox();
@@ -40,41 +38,9 @@ namespace MyQQ
             this.findPwdLab = new System.Windows.Forms.Label();
             this.loginBtn = new System.Windows.Forms.Button();
             this.regLab = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.closePBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minPBox)).BeginInit();
+            this.btnMin = new MyCtrls.BtnMMC();
+            this.btnClose = new MyCtrls.BtnMMC();
             this.SuspendLayout();
-            // 
-            // closePBox
-            // 
-            this.closePBox.BackColor = System.Drawing.Color.Transparent;
-            this.closePBox.BackgroundImage = global::MyQQ.Properties.Resources.close;
-            this.closePBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.closePBox.Location = new System.Drawing.Point(399, 0);
-            this.closePBox.Margin = new System.Windows.Forms.Padding(0);
-            this.closePBox.Name = "closePBox";
-            this.closePBox.Size = new System.Drawing.Size(28, 28);
-            this.closePBox.TabIndex = 0;
-            this.closePBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.closePBox, "关闭");
-            this.closePBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.closePBox_MouseClick);
-            this.closePBox.MouseLeave += new System.EventHandler(this.closePBox_MouseLeave);
-            this.closePBox.MouseHover += new System.EventHandler(this.closePBox_MouseHover);
-            // 
-            // minPBox
-            // 
-            this.minPBox.BackColor = System.Drawing.Color.Transparent;
-            this.minPBox.BackgroundImage = global::MyQQ.Properties.Resources.min;
-            this.minPBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.minPBox.Location = new System.Drawing.Point(369, 0);
-            this.minPBox.Margin = new System.Windows.Forms.Padding(0);
-            this.minPBox.Name = "minPBox";
-            this.minPBox.Size = new System.Drawing.Size(28, 28);
-            this.minPBox.TabIndex = 1;
-            this.minPBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.minPBox, "最小化");
-            this.minPBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.minPBox_MouseClick);
-            this.minPBox.MouseLeave += new System.EventHandler(this.minPBox_MouseLeave);
-            this.minPBox.MouseHover += new System.EventHandler(this.minPBox_MouseHover);
             // 
             // userPWDTBox
             // 
@@ -169,12 +135,46 @@ namespace MyQQ
             this.regLab.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.regLab.MouseClick += new System.Windows.Forms.MouseEventHandler(this.regLab_MouseClick);
             // 
+            // btnMin
+            // 
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.BtnType = MyCtrls.BtnType.Minimize;
+            this.btnMin.LineColor = System.Drawing.Color.White;
+            this.btnMin.LineWidth = 1;
+            this.btnMin.Location = new System.Drawing.Point(368, 0);
+            this.btnMin.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(150)))));
+            this.btnMin.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.btnMin.MouseLeaveColor = System.Drawing.Color.Transparent;
+            this.btnMin.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(28, 28);            
+            this.btnMin.TabIndex = 7;
+            this.btnMin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMin_MouseClick);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BtnType = MyCtrls.BtnType.Close;
+            this.btnClose.LineColor = System.Drawing.Color.White;
+            this.btnClose.LineWidth = 1;
+            this.btnClose.Location = new System.Drawing.Point(399, 0);
+            this.btnClose.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnClose.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.MouseLeaveColor = System.Drawing.Color.Transparent;
+            this.btnClose.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(28, 28);            
+            this.btnClose.TabIndex = 8;
+            this.btnClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseClick);
+            // 
             // Login_Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MyQQ.Properties.Resources.login;
             this.ClientSize = new System.Drawing.Size(427, 327);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnMin);
             this.Controls.Add(this.regLab);
             this.Controls.Add(this.loginBtn);
             this.Controls.Add(this.findPwdLab);
@@ -182,25 +182,18 @@ namespace MyQQ
             this.Controls.Add(this.autoLoginChkBox);
             this.Controls.Add(this.userIDCBox);
             this.Controls.Add(this.userPWDTBox);
-            this.Controls.Add(this.minPBox);
-            this.Controls.Add(this.closePBox);
             this.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login_Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.Login_Frm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.closePBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minPBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox closePBox;
-        private System.Windows.Forms.PictureBox minPBox;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TextBox userPWDTBox;
         private System.Windows.Forms.ComboBox userIDCBox;
@@ -209,5 +202,7 @@ namespace MyQQ
         private System.Windows.Forms.Label findPwdLab;
         private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.Label regLab;
+        private MyCtrls.BtnMMC btnMin;
+        private MyCtrls.BtnMMC btnClose;
     }
 }

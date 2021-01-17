@@ -295,36 +295,17 @@ namespace MyQQ
         }
 
         #region
-        private void minPBox_MouseClick(object sender, MouseEventArgs e)
+
+        private void btnClose_MouseClick(object sender, MouseEventArgs e)
+        {
+            Application.ExitThread();
+        }
+
+        private void btnMin_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void minPBox_MouseHover(object sender, EventArgs e)
-        {
-            minPBox.BackColor = Color.FromArgb(100, 100, 200);
-        }
-
-        private void minPBox_MouseLeave(object sender, EventArgs e)
-        {
-            minPBox.BackColor = Color.Transparent;
-        }
-
-        private void closePBox_MouseClick(object sender, MouseEventArgs e)
-        {
-            Application.ExitThread();//退出当前应用程序
-        }
-
-        private void closePBox_MouseHover(object sender, EventArgs e)
-        {
-            closePBox.BackColor = Color.FromArgb(200, 50, 50);
-        }
-
-        private void closePBox_MouseLeave(object sender, EventArgs e)
-        {
-            closePBox.BackColor = Color.Transparent;
-        }
-               
 
         private void Main_Frm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -501,6 +482,8 @@ namespace MyQQ
             friendLv.View = friendLv.View == View.Tile ? View.SmallIcon : View.Tile;
             tsMenuSHead.Text = friendLv.View == View.Tile ? "小头像" : "大头像";
         }
+
+        
 
         //添加好友 
         private void tsMenuAdd_Click(object sender, EventArgs e)

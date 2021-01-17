@@ -39,6 +39,7 @@ namespace MyQQ
             this.nameLab = new System.Windows.Forms.Label();
             this.signLab = new System.Windows.Forms.Label();
             this.signTBox = new System.Windows.Forms.TextBox();
+            this.headPBox = new System.Windows.Forms.PictureBox();
             this.friendLv = new System.Windows.Forms.ListView();
             this.friendListCms = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsMenuShowInfo = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,22 +49,19 @@ namespace MyQQ
             this.listHeadImg = new System.Windows.Forms.ImageList(this.components);
             this.listSmallHeadImg = new System.Windows.Forms.ImageList(this.components);
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.imglistMessage = new System.Windows.Forms.ImageList(this.components);
             this.tbBtnInfo = new System.Windows.Forms.ToolStripButton();
             this.tbBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.tbBtnUpFriend = new System.Windows.Forms.ToolStripButton();
             this.tbBtnSysMsg = new System.Windows.Forms.ToolStripButton();
             this.tbBtnExit = new System.Windows.Forms.ToolStripButton();
-            this.headPBox = new System.Windows.Forms.PictureBox();
-            this.minPBox = new System.Windows.Forms.PictureBox();
-            this.closePBox = new System.Windows.Forms.PictureBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.imglistMessage = new System.Windows.Forms.ImageList(this.components);
+            this.btnClose = new MyCtrls.BtnMMC();
+            this.btnMin = new MyCtrls.BtnMMC();
             this.topPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).BeginInit();
             this.friendListCms.SuspendLayout();
             this.toolBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minPBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closePBox)).BeginInit();
             this.SuspendLayout();
             // 
             // topPanel
@@ -71,16 +69,16 @@ namespace MyQQ
             this.topPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.topPanel.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.topPanel.Controls.Add(this.btnClose);
+            this.topPanel.Controls.Add(this.btnMin);
             this.topPanel.Controls.Add(this.textBox1);
             this.topPanel.Controls.Add(this.nameLab);
             this.topPanel.Controls.Add(this.signLab);
             this.topPanel.Controls.Add(this.signTBox);
             this.topPanel.Controls.Add(this.headPBox);
-            this.topPanel.Controls.Add(this.minPBox);
-            this.topPanel.Controls.Add(this.closePBox);
-            this.topPanel.Location = new System.Drawing.Point(1, 1);
+            this.topPanel.Location = new System.Drawing.Point(2, 2);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(308, 135);
+            this.topPanel.Size = new System.Drawing.Size(306, 135);
             this.topPanel.TabIndex = 4;
             this.topPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseDown);
             // 
@@ -125,6 +123,15 @@ namespace MyQQ
             this.signTBox.Visible = false;
             this.signTBox.LostFocus += new System.EventHandler(this.SignTBox_Leave);
             // 
+            // headPBox
+            // 
+            this.headPBox.Location = new System.Drawing.Point(4, 61);
+            this.headPBox.Name = "headPBox";
+            this.headPBox.Size = new System.Drawing.Size(66, 66);
+            this.headPBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.headPBox.TabIndex = 4;
+            this.headPBox.TabStop = false;
+            // 
             // friendLv
             // 
             this.friendLv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -145,10 +152,10 @@ namespace MyQQ
             this.friendLv.HideSelection = false;
             this.friendLv.HoverSelection = true;
             this.friendLv.LargeImageList = this.listHeadImg;
-            this.friendLv.Location = new System.Drawing.Point(1, 137);
+            this.friendLv.Location = new System.Drawing.Point(2, 138);
             this.friendLv.MultiSelect = false;
             this.friendLv.Name = "friendLv";
-            this.friendLv.Size = new System.Drawing.Size(308, 368);
+            this.friendLv.Size = new System.Drawing.Size(306, 368);
             this.friendLv.SmallImageList = this.listSmallHeadImg;
             this.friendLv.StateImageList = this.listSmallHeadImg;
             this.friendLv.TabIndex = 5;
@@ -422,24 +429,12 @@ namespace MyQQ
             this.tbBtnUpFriend,
             this.tbBtnSysMsg,
             this.tbBtnExit});
-            this.toolBar.Location = new System.Drawing.Point(1, 508);
+            this.toolBar.Location = new System.Drawing.Point(2, 507);
             this.toolBar.Name = "toolBar";
             this.toolBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolBar.Size = new System.Drawing.Size(308, 27);
+            this.toolBar.Size = new System.Drawing.Size(306, 27);
             this.toolBar.TabIndex = 6;
             this.toolBar.Text = "toolStrip1";
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // imglistMessage
-            // 
-            this.imglistMessage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistMessage.ImageStream")));
-            this.imglistMessage.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglistMessage.Images.SetKeyName(0, "info.png");
-            this.imglistMessage.Images.SetKeyName(1, "Message.gif");
             // 
             // tbBtnInfo
             // 
@@ -495,53 +490,58 @@ namespace MyQQ
             this.tbBtnExit.Text = "退出";
             this.tbBtnExit.Click += new System.EventHandler(this.tbBtnExit_Click);
             // 
-            // headPBox
+            // notifyIcon1
             // 
-            this.headPBox.Location = new System.Drawing.Point(4, 61);
-            this.headPBox.Name = "headPBox";
-            this.headPBox.Size = new System.Drawing.Size(66, 66);
-            this.headPBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.headPBox.TabIndex = 4;
-            this.headPBox.TabStop = false;
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
-            // minPBox
+            // imglistMessage
             // 
-            this.minPBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minPBox.BackgroundImage = global::MyQQ.Properties.Resources.min;
-            this.minPBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.minPBox.Location = new System.Drawing.Point(250, 0);
-            this.minPBox.Margin = new System.Windows.Forms.Padding(0);
-            this.minPBox.Name = "minPBox";
-            this.minPBox.Size = new System.Drawing.Size(28, 28);
-            this.minPBox.TabIndex = 3;
-            this.minPBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.minPBox, "最小化");
-            this.minPBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.minPBox_MouseClick);
-            this.minPBox.MouseLeave += new System.EventHandler(this.minPBox_MouseLeave);
-            this.minPBox.MouseHover += new System.EventHandler(this.minPBox_MouseHover);
+            this.imglistMessage.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglistMessage.ImageStream")));
+            this.imglistMessage.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglistMessage.Images.SetKeyName(0, "info.png");
+            this.imglistMessage.Images.SetKeyName(1, "Message.gif");
             // 
-            // closePBox
+            // btnClose
             // 
-            this.closePBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closePBox.BackgroundImage = global::MyQQ.Properties.Resources.close;
-            this.closePBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.closePBox.Location = new System.Drawing.Point(280, 0);
-            this.closePBox.Margin = new System.Windows.Forms.Padding(0);
-            this.closePBox.Name = "closePBox";
-            this.closePBox.Size = new System.Drawing.Size(28, 28);
-            this.closePBox.TabIndex = 2;
-            this.closePBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.closePBox, "关闭");
-            this.closePBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.closePBox_MouseClick);
-            this.closePBox.MouseLeave += new System.EventHandler(this.closePBox_MouseLeave);
-            this.closePBox.MouseHover += new System.EventHandler(this.closePBox_MouseHover);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BtnType = MyCtrls.BtnType.Close;
+            this.btnClose.LineColor = System.Drawing.Color.White;
+            this.btnClose.LineWidth = 1;
+            this.btnClose.Location = new System.Drawing.Point(279, -2);
+            this.btnClose.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnClose.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.MouseLeaveColor = System.Drawing.Color.Transparent;
+            this.btnClose.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(28, 28);            
+            this.btnClose.TabIndex = 10;
+            this.btnClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseClick);
+            // 
+            // btnMin
+            // 
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.BtnType = MyCtrls.BtnType.Minimize;
+            this.btnMin.LineColor = System.Drawing.Color.White;
+            this.btnMin.LineWidth = 1;
+            this.btnMin.Location = new System.Drawing.Point(248, -2);
+            this.btnMin.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(150)))));
+            this.btnMin.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.btnMin.MouseLeaveColor = System.Drawing.Color.Transparent;
+            this.btnMin.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(28, 28);            
+            this.btnMin.TabIndex = 9;
+            this.btnMin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMin_MouseClick);
             // 
             // Main_Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(310, 536);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.friendLv);
@@ -551,27 +551,22 @@ namespace MyQQ
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(310, 0);
             this.Name = "Main_Frm";
-            this.Padding = new System.Windows.Forms.Padding(1);
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.Text = "Main_Frm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Frm_FormClosed);
             this.Load += new System.EventHandler(this.Main_Frm_Load);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).EndInit();
             this.friendListCms.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.headPBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minPBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closePBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox minPBox;
-        private System.Windows.Forms.PictureBox closePBox;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.ListView friendLv;
@@ -595,5 +590,7 @@ namespace MyQQ
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripMenuItem tsMenuShowInfo;
         private System.Windows.Forms.ImageList imglistMessage;
+        private MyCtrls.BtnMMC btnClose;
+        private MyCtrls.BtnMMC btnMin;
     }
 }
