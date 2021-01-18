@@ -35,6 +35,8 @@ namespace MyQQ
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_Frm));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.topPanel = new System.Windows.Forms.Panel();
+            this.btnClose = new MyCtrls.BtnMMC();
+            this.btnMin = new MyCtrls.BtnMMC();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.nameLab = new System.Windows.Forms.Label();
             this.signLab = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@ namespace MyQQ
             this.tbBtnExit = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.imglistMessage = new System.Windows.Forms.ImageList(this.components);
-            this.btnClose = new MyCtrls.BtnMMC();
-            this.btnMin = new MyCtrls.BtnMMC();
             this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headPBox)).BeginInit();
             this.friendListCms.SuspendLayout();
@@ -81,6 +81,37 @@ namespace MyQQ
             this.topPanel.Size = new System.Drawing.Size(306, 135);
             this.topPanel.TabIndex = 4;
             this.topPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseDown);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BtnType = MyCtrls.BtnType.Close;
+            this.btnClose.LineColor = System.Drawing.Color.White;
+            this.btnClose.LineWidth = 1;
+            this.btnClose.Location = new System.Drawing.Point(279, -2);
+            this.btnClose.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnClose.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Padding = new System.Windows.Forms.Padding(8);
+            this.btnClose.Size = new System.Drawing.Size(28, 28);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseClick);
+            // 
+            // btnMin
+            // 
+            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.LineColor = System.Drawing.Color.White;
+            this.btnMin.LineWidth = 1;
+            this.btnMin.Location = new System.Drawing.Point(248, -2);
+            this.btnMin.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(150)))));
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Padding = new System.Windows.Forms.Padding(8);
+            this.btnMin.Size = new System.Drawing.Size(28, 28);
+            this.btnMin.TabIndex = 9;
+            this.btnMin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMin_MouseClick);
             // 
             // textBox1
             // 
@@ -121,6 +152,7 @@ namespace MyQQ
             this.signTBox.Size = new System.Drawing.Size(218, 23);
             this.signTBox.TabIndex = 5;
             this.signTBox.Visible = false;
+            this.signTBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.signTBox_KeyPress);
             this.signTBox.LostFocus += new System.EventHandler(this.SignTBox_Leave);
             // 
             // headPBox
@@ -162,6 +194,7 @@ namespace MyQQ
             this.friendLv.UseCompatibleStateImageBehavior = false;
             this.friendLv.View = System.Windows.Forms.View.Tile;
             this.friendLv.MouseClick += new System.Windows.Forms.MouseEventHandler(this.friendLv_MouseClick);
+            this.friendLv.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.friendLv_MouseDoubleClick);
             this.friendLv.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frendLv_MouseDown);
             // 
             // friendListCms
@@ -494,6 +527,7 @@ namespace MyQQ
             // 
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // imglistMessage
             // 
@@ -501,40 +535,6 @@ namespace MyQQ
             this.imglistMessage.TransparentColor = System.Drawing.Color.Transparent;
             this.imglistMessage.Images.SetKeyName(0, "info.png");
             this.imglistMessage.Images.SetKeyName(1, "Message.gif");
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BtnType = MyCtrls.BtnType.Close;
-            this.btnClose.LineColor = System.Drawing.Color.White;
-            this.btnClose.LineWidth = 1;
-            this.btnClose.Location = new System.Drawing.Point(279, -2);
-            this.btnClose.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnClose.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnClose.MouseLeaveColor = System.Drawing.Color.Transparent;
-            this.btnClose.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(28, 28);            
-            this.btnClose.TabIndex = 10;
-            this.btnClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnClose_MouseClick);
-            // 
-            // btnMin
-            // 
-            this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BtnType = MyCtrls.BtnType.Minimize;
-            this.btnMin.LineColor = System.Drawing.Color.White;
-            this.btnMin.LineWidth = 1;
-            this.btnMin.Location = new System.Drawing.Point(248, -2);
-            this.btnMin.MouseDownColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(150)))));
-            this.btnMin.MouseEnterColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.btnMin.MouseLeaveColor = System.Drawing.Color.Transparent;
-            this.btnMin.MouseUpColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(28, 28);            
-            this.btnMin.TabIndex = 9;
-            this.btnMin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnMin_MouseClick);
             // 
             // Main_Frm
             // 
@@ -555,6 +555,7 @@ namespace MyQQ
             this.Text = "Main_Frm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_Frm_FormClosed);
             this.Load += new System.EventHandler(this.Main_Frm_Load);
+            this.SizeChanged += new System.EventHandler(this.Main_Frm_SizeChanged);
             this.topPanel.ResumeLayout(false);
             this.topPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.headPBox)).EndInit();

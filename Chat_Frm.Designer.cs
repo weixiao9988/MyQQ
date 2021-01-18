@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 450);
             this.Name = "Chat_Frm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat_Frm";
             this.Load += new System.EventHandler(this.Chat_Frm_Load);
             this.ResumeLayout(false);

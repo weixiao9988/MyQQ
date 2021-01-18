@@ -196,5 +196,7 @@ namespace MyQQ
         {
             this.WindowState = FormWindowState.Minimized;
         }
+    
+
     }
 }

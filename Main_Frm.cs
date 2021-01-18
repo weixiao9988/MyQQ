@@ -313,7 +313,7 @@ namespace MyQQ
         }
         #endregion
 
-        #region
+        #region 窗体移动、拉升
         /// <summary>
         /// 窗体移动、拉升
         /// </summary>
@@ -428,12 +428,9 @@ namespace MyQQ
 
         }
 
-
-
-
-
         #endregion
 
+        #region 工具栏按钮操作
         private void tbBtnInfo_Click(object sender, EventArgs e)
         {
             EditInfo_Frm infoSetFrm = new EditInfo_Frm();
@@ -470,6 +467,8 @@ namespace MyQQ
                 Application.ExitThread();//退出当前应用程序
         }
 
+        #endregion
+
         //显示个人信息
         private void tsMenuShowInfo_Click(object sender, EventArgs e)
         {
@@ -482,23 +481,103 @@ namespace MyQQ
             friendLv.View = friendLv.View == View.Tile ? View.SmallIcon : View.Tile;
             tsMenuSHead.Text = friendLv.View == View.Tile ? "小头像" : "大头像";
         }
-
         
-
         //添加好友 
         private void tsMenuAdd_Click(object sender, EventArgs e)
         {
-
+            if (friendLv.SelectedItems.Count>0)
+            {
+                //定义为指定用户添加指定好友的SQL语句
+                string sqlStr = "insert into tb_Friend (HostID, FriendID) values(" + PubCls.loginID + "," + Convert.ToInt32(friendLv.SelectedItems[0].Name) + ")";
+                int result = dataOprt.ExecSQLResult(sqlStr);
+                if (result == 1)
+                {
+                    MessageBox.Show("添加成功！");
+                    friendLv.Groups[0].Items.Add(friendLv.SelectedItems[0]);
+                    ShowFriendList();
+                }
+                else
+                    MessageBox.Show("添加失败，请稍候再试！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }            
         }
 
+        //删除好友
         private void tsMenuDel_Click(object sender, EventArgs e)
         {
-
+            if (friendLv.SelectedItems.Count>0)
+            {
+                DialogResult result=MessageBox.Show("确实要删除该好友吗？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result==DialogResult.Yes)
+                {
+                    //定义删除指定用户指定好友的SQL语句
+                    string sqlStr = "delete from tb_Friend where HostID=" + PubCls.loginID + " AND FriendID=" + Convert.ToInt32(friendLv.SelectedItems[0].Name) + "";
+                    int delResult = dataOprt.ExecSQLResult(sqlStr);
+                    if (delResult==1)
+                    {
+                        MessageBox.Show("好友已删除", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        friendLv.Items.Remove(friendLv.SelectedItems[0]);
+                    }
+                }
+            }
         }
 
-        
+        //双击打开聊天窗体
+        private void friendLv_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //判断是否有选中项
+            if (friendLv.SelectedItems.Count>0)
+            {
+                if (chatFrm == null)//判断聊天窗体对象是否为空
+                {
+                    chatFrm = new Chat_Frm();//创建聊天窗体对象
+                    chatFrm.friendID = Convert.ToInt32(friendLv.SelectedItems[0].Name);//记录聊天的账号
+                    chatFrm.nickName = dataOprt.GetDataSet("select NickName from tb_User where ID=" + chatFrm.friendID).Tables[0].Rows[0][0].ToString();//记录昵称
+                    chatFrm.headID = Convert.ToInt32(dataOprt.GetDataSet("select HeadID from tb_User where ID=" + chatFrm.friendID).Tables[0].Rows[0][0]) + 1;//记录头像ID
+                    chatFrm.ShowDialog();//以对话框显示聊天窗体对象
+                    chatFrm = null;//将聊天窗体对象设置为空
+                }
+                if (chatTim.Enabled == true)//如果聊天定时器处于可用状态
+                {
+                    chatTim.Stop();//停止聊天定时器
+                    friendLv.SelectedItems[0].ImageIndex = friendHeadID;//将选中项的头像显示为正常状态
+                }
+            }
+        }
+
+        //系统托盘图标
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (WindowState==FormWindowState.Minimized)
+            {
+                this.Show();
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        //窗体尺寸发生变化时触发的事件（系统托盘）
+        private void Main_Frm_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState==FormWindowState.Normal)    //判断窗体是否为正常状态
+            {
+                notifyIcon1.Visible = false;    //隐藏托盘图标
+            }
+            else
+            {
+                this.Hide();
+                notifyIcon1.Visible = true;
+            }
+        }
 
 
-        
+        private void signTBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果按下回车键
+            if (e.KeyChar=='\r')
+            {
+                dataOprt.ExecSQLResult("update tb_User set Sign='" + signTBox.Text + "' where ID=" + PubCls.loginID);//更新个性签名                
+                friendLv.Focus();
+            }
+        }
+
     }
 }

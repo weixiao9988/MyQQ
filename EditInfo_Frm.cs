@@ -14,6 +14,7 @@ namespace MyQQ
     {
         public delegate void UpInfoDlgt();
         public event UpInfoDlgt UpInfoEvt;
+        private DataOperator dataOperator = new DataOperator();
 
         public EditInfo_Frm()
         {
@@ -23,6 +24,12 @@ namespace MyQQ
         private void EditInfo_Frm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ShowHead(int headID)
+        {
+            headPBox.Image = imglistHead.Images[headID];
+            headPBox.Tag = headID;
         }
 
         private void chgHeadBtn_Click(object sender, EventArgs e)
